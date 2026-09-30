@@ -158,7 +158,7 @@ jobs:
               echo "Error: vermagic [ ${mod_vermagic} ] != kernel release [ ${krel} ]"; exit 1; }
 
           # Stage as a rootfs overlay; start_service.sh installs it on first boot.
-          stage="/builder/custom-files/usr/local/lib/rtl8189fs"
+          stage="/home/runner/work/amlogic-s9xxx-armbian/amlogic-s9xxx-armbian/build/output/images"
           mkdir -p "${stage}"
           cp -f 8189fs.ko "${stage}/8189fs-${krel}.ko"
           ls -lh "${stage}"
