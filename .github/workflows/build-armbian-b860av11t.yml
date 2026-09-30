@@ -37,7 +37,7 @@ on:
       armbian_kernel:
         description: "Kernel version (must be a single pinned version)."
         required: false
-        default: "6.6.157"
+        default: "6.18.54"
       kernel_usage:
         description: "Kernel release tag in ophub/kernel."
         required: false
@@ -70,7 +70,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-26.04-arm
     if: ${{ github.event.repository.owner.id == github.event.sender.id }}
     permissions:
       contents: write
@@ -90,7 +90,7 @@ jobs:
           sudo swapoff -a
           sudo rm -f /swapfile /mnt/swapfile
           sudo apt-get -y update
-          sudo apt-get -y install $(curl -fsSL https://ophub.org/ubuntu2404-build-armbian-depends)
+          sudo apt-get -y install $(curl -fsSL https://ophub.org/ubuntu2604-build-armbian-depends)
           # Toolchain for the out-of-tree kernel module
           sudo apt-get -y install build-essential bc bison flex libssl-dev libelf-dev
           sudo apt-get -y autoremove --purge
