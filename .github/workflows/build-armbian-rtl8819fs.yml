@@ -15,7 +15,7 @@
 # Refs: ophub/amlogic-s9xxx-armbian#640, #1631, #3193
 #==========================================================================
 
-name: Build Armbian for B860AV1.1-T
+name: Build Armbian 8189fs
 
 on:
   workflow_dispatch:
