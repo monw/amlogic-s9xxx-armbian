@@ -148,6 +148,7 @@ jobs:
 
           # Native aarch64 build against the target kernel headers
           #make -j"$(nproc)" ARCH=arm64 KSRC=/builder/kbuild
+          chmod +x install.sh
           sh install.sh
           cd driver/driver
           [[ -f 8189fs.ko ]] || { echo "Error: 8189fs.ko was not produced"; exit 1; }
