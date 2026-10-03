@@ -58,7 +58,7 @@ on:
       rtl8189fs_repo:
         description: "RTL8189FTV driver source repository."
         required: false
-        default: "https://github.com/monw/driver-wifi-RTL8189FS-6.18.43"
+        default: "https://github.com/monw/armbian-rtl8189ES-rtl8189fs-wifi"
       rtl8189fs_branch:
         description: "Driver branch (rtl8189fs is required; 8189es will not drive 8189FTV)."
         required: false
@@ -147,10 +147,8 @@ jobs:
           echo "Driver source: $(git rev-parse --short HEAD) (branch ${{ inputs.rtl8189fs_branch }})"
 
           # Native aarch64 build against the target kernel headers
-          #make -j"$(nproc)" ARCH=arm64 KSRC=/builder/kbuild
-          chmod +x install.sh
-          sh install.sh
-          cd driver/driver
+          make -j"$(nproc)" ARCH=arm64 KSRC=/builder/kbuild
+          
           [[ -f 8189fs.ko ]] || { echo "Error: 8189fs.ko was not produced"; exit 1; }
           modinfo 8189fs.ko | head -n 12
 
