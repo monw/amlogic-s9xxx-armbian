@@ -143,12 +143,13 @@ jobs:
           cp -f "${kver}/config-${krel}" kbuild/.config
 
           git clone -q --depth 1 -b "${{ inputs.rtl8189fs_branch }}" "${{ inputs.rtl8189fs_repo }}" driver
-          cd driver/driver/driver
+          cd driver
           echo "Driver source: $(git rev-parse --short HEAD) (branch ${{ inputs.rtl8189fs_branch }})"
 
           # Native aarch64 build against the target kernel headers
-          make -j"$(nproc)" ARCH=arm64 KSRC=/builder/kbuild
-
+          #make -j"$(nproc)" ARCH=arm64 KSRC=/builder/kbuild
+          sh install.sh
+          cd driver/driver
           [[ -f 8189fs.ko ]] || { echo "Error: 8189fs.ko was not produced"; exit 1; }
           modinfo 8189fs.ko | head -n 12
 
