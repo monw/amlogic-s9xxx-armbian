@@ -58,11 +58,11 @@ on:
       rtl8189fs_repo:
         description: "RTL8189FTV driver source repository."
         required: false
-        default: "https://github.com/monw/rtl8189ES_linux"
+        default: "https://github.com/monw/driver-wifi-RTL8189FS-6.18.43"
       rtl8189fs_branch:
         description: "Driver branch (rtl8189fs is required; 8189es will not drive 8189FTV)."
         required: false
-        default: "rtl8189fs-6.18"
+        default: "main"
 
 env:
   TZ: Asia/Shanghai
@@ -143,7 +143,7 @@ jobs:
           cp -f "${kver}/config-${krel}" kbuild/.config
 
           git clone -q --depth 1 -b "${{ inputs.rtl8189fs_branch }}" "${{ inputs.rtl8189fs_repo }}" driver
-          cd driver
+          cd driver/driver/driver
           echo "Driver source: $(git rev-parse --short HEAD) (branch ${{ inputs.rtl8189fs_branch }})"
 
           # Native aarch64 build against the target kernel headers
