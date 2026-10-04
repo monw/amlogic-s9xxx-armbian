@@ -37,7 +37,7 @@ on:
       armbian_kernel:
         description: "Kernel version (must be a single pinned version)."
         required: false
-        default: "6.12.111"
+        default: "6.18.54"
       kernel_usage:
         description: "Kernel release tag in ophub/kernel."
         required: false
@@ -58,11 +58,11 @@ on:
       rtl8189fs_repo:
         description: "RTL8189FTV driver source repository."
         required: false
-        default: "https://github.com/jwrdegoede/rtl8189ES_linux"
+        default: "https://github.com/monw/armbian-rtl8189ES-rtl8189fs-wifi"
       rtl8189fs_branch:
         description: "Driver branch (rtl8189fs is required; 8189es will not drive 8189FTV)."
         required: false
-        default: "rtl8189fs"
+        default: "main"
 
 env:
   TZ: Asia/Shanghai
