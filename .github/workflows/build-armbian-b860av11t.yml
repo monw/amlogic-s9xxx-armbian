@@ -37,7 +37,7 @@ on:
       armbian_kernel:
         description: "Kernel version (must be a single pinned version)."
         required: false
-        default: "6.12.112"
+        default: "6.12.113"
       kernel_usage:
         description: "Kernel release tag in ophub/kernel."
         required: false
